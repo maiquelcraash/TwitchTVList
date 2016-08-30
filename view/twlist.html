@@ -1,1 +1,15 @@
+<div class="jumbotron">
+    <table ng-if="streams.length > 0" class="table table-bordered">
+        <tr ng-repeat="stream in streams | orderBy:streams.viewers">
+            <td><img src="{{ stream.streamImg }}"></td>
+            <td>{{ stream.title }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+
+
 {{ streams }}
