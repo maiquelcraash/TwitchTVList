@@ -8,7 +8,7 @@
 	angular.module("twitchTVList").factory("twitchAPI", function ($http) {
 
 		var _getStreams = function () {
-			var streams = $http.get("https://api.twitch.tv/kraken/streams/featured?limit=5");
+			var streams = $http.get("https://api.twitch.tv/kraken/streams/featured?limit=10");
 			return streams;
 		};
 
