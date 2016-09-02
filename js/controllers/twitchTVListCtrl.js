@@ -5,16 +5,27 @@
 (function () {
 	"use strict";
 
-	angular.module("twitchTVList").controller("twitchTVListCtrl", function ($scope, $sce, streams) {
+	angular.module("twitchTVList").controller("twitchTVListCtrl", function ($scope, $sce, twitchAPI, $attrs) {
 		$scope.app = "TwitchTV List";
-		$scope.streams = parseStreams(streams.data);
+
+		var search = parseSearch($scope.searchedterm); //termo buscado vindo da diretiva uiTwilist.js
+
+		if (search) {
+			twitchAPI.getStreamBySearch(search).success(function (data, status) {
+				$scope.streams = parseSearchedStreams(data);
+			});
+		}
+		else {
+			twitchAPI.getFeaturedStreams().success(function (data, status) {
+				$scope.streams = parseFeaturedStreams(data);
+			});
+		}
 
 		/* Converte o JSON em um objeto mais simples e manipulável */
-		function parseStreams(data) {
-			var _keys = Object.keys(data);
+		function parseFeaturedStreams(data) {
 			var _streams = [];
 
-			data[_keys[1]].forEach(function (stream) {
+			data.featured.forEach(function (stream) {
 				var _stream = {};
 				_stream.title = stream.title;
 				_stream.description = $sce.trustAsHtml(stream.text);
@@ -30,6 +41,32 @@
 				_streams.push(_stream);
 			});
 			return _streams;
+		}
+
+		/* Converte o JSON em um objeto mais simples e manipulável */
+		function parseSearchedStreams(data) {
+			var _streams = [];
+
+			data.streams.forEach(function (stream) {
+				var _stream = {};
+				_stream.title = stream.game;
+				_stream.description = "";
+				_stream.status = "online";
+				_stream.viewers = stream.viewers;
+				_stream.user = stream.channel.display_name;
+				_stream.userImg = stream.channel.logo;
+				_stream.userUrl = stream.channel.url + "/profile";
+				_stream.streamImg = stream.preview.large;
+				_stream.streamUrl = stream.channel.url;
+				_stream.views = stream.channel.views;
+				_stream.followers = stream.channel.followers;
+				_streams.push(_stream);
+			});
+			return _streams;
+		}
+
+		function parseSearch(search) {
+			return search.toLowerCase().trim().replace(/\s\s+/g, '+');
 		}
 	});
 }());

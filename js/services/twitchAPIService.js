@@ -7,13 +7,17 @@
 
 	angular.module("twitchTVList").factory("twitchAPI", function ($http) {
 
-		var _getStreams = function () {
-			var streams = $http.get("https://api.twitch.tv/kraken/streams/featured?limit=10");
-			return streams;
+		var _getFeaturedStreams = function () {
+			return $http.get("https://api.twitch.tv/kraken/streams/featured?limit=10");
+		};
+
+		var _getStreamBySearch = function (search) {
+			return $http.get("https://api.twitch.tv/kraken/search/streams?limit=10&offset=0&q=" + search)
 		};
 
 		return {
-			getStreams: _getStreams
+			getStreamBySearch: _getStreamBySearch,
+			getFeaturedStreams: _getFeaturedStreams
 		};
 	});
 
