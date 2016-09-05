@@ -7,19 +7,25 @@
 
 	angular.module("twitchTVList").controller("twitchTVListCtrl", function ($scope, $sce, twitchAPI, $attrs) {
 		$scope.app = "TwitchTV List";
+		$scope.searchedterm = "";
 
-		var search = parseSearch($scope.searchedterm); //termo buscado vindo da diretiva uiTwilist.js
+		$scope.doSearch = function (_search) {
 
-		if (search) {
-			twitchAPI.getStreamBySearch(search).success(function (data, status) {
-				$scope.streams = parseSearchedStreams(data);
-			});
-		}
-		else {
-			twitchAPI.getFeaturedStreams().success(function (data, status) {
-				$scope.streams = parseFeaturedStreams(data);
-			});
-		}
+			if (_search) {
+				_search = parseSearch(_search);
+
+				twitchAPI.getStreamBySearch(_search).success(function (data, status) {
+					$scope.streams = parseSearchedStreams(data);
+				});
+			}
+			else {
+				twitchAPI.getFeaturedStreams().success(function (data, status) {
+					$scope.streams = parseFeaturedStreams(data);
+				});
+			}
+		};
+
+		$scope.doSearch($scope.searchedterm);
 
 		/* Converte o JSON em um objeto mais simples e manipulável */
 		function parseFeaturedStreams(data) {
