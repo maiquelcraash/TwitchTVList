@@ -7,9 +7,10 @@
 
 	angular.module("twitchTVList").controller("twitchTVListCtrl", function ($scope, $sce, twitchAPI, $attrs) {
 		$scope.app = "TwitchTV List";
-		$scope.searchedterm = "";
 
-		$scope.doSearch = function (_search) {
+		this.searchedterm = "";
+		this.doSearch = function () {
+			var _search = this.searchedterm;
 
 			if (_search) {
 				_search = parseSearch(_search);
@@ -24,8 +25,6 @@
 				});
 			}
 		};
-
-		$scope.doSearch($scope.searchedterm);
 
 		/* Converte o JSON em um objeto mais simples e manipulável */
 		function parseFeaturedStreams(data) {
