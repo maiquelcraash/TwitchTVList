@@ -1,5 +1,7 @@
 - Ferramenta para  visualizar streams do TwitchTV
 
+- Necessário utilizar o "$ bower install" no diretório para instalar as dependências
+
 - Tarefa do Free Code Camp
 https://www.freecodecamp.com/challenges/use-the-twitchtv-json-api
 

@@ -1,33 +1,39 @@
 <div class="twlist">
     <div ng-if="streams.length > 0" class="container-fluid">
-        <div class="row stream" ng-repeat="stream in streams | orderBy:'viewers':true">
-            <div class="col-md-3 col-sm-4 col-xs-12 image">
-                <div class="row">
+        <div class="stream" ng-repeat="stream in streams | orderBy:'viewers':true">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-12 image">
                     <a href="{{ stream.streamUrl }}" target="_blank"><img src="{{ stream.streamImg }}"></a>
                 </div>
-                <div class="row stats">
-                    <div class="col-xs-3 col-sm-6">
-                        <span style="color: #cb0000" class="fa fa-video-camera"></span>
-                        <div>{{ stream.viewers }}</div>
-                    </div>
-                    <div class="col-xs-3 col-sm-6">
-                        <span class="fa fa-eye"></span>
-                        <div>{{ stream.views }}</div>
-                    </div>
-                    <div class="col-xs-3 col-sm-6">
-                        <span class="fa fa-heart"></span>
-                        <div>{{ stream.followers }}</div>
-                    </div>
-                    <div class="col-xs-3 col-sm-6">
-                        <a href="{{ stream.userUrl }}" target="_blank"><span style="color: #337ab7" class="fa fa-user"></span></a>
-                        <div><a href="{{ stream.userUrl }}" target="_blank">{{ stream.user }}</a></div>
+                <div class="col-md-9 col-sm-8 col-xs-12 content">
+                    <div class="title">{{ stream.title }}</div>
+                    <div class="stats">
+                        <div class="col-xs-3 col-sm-3">
+                            <span style="color: #cb0000" class="fa fa-video-camera"></span>
+                            <div>{{ stream.viewers }}</div>
+                        </div>
+                        <div class="col-xs-3 col-sm-3">
+                            <span class="fa fa-eye"></span>
+                            <div>{{ stream.views }}</div>
+                        </div>
+                        <div class="col-xs-3 col-sm-3">
+                            <span class="fa fa-heart"></span>
+                            <div>{{ stream.followers }}</div>
+                        </div>
+                        <div class="col-xs-3 col-sm-3">
+                            <a href="{{ stream.userUrl }}" target="_blank"><span style="color: #337ab7"
+                                                                                 class="fa fa-user"></span></a>
+                            <div><a href="{{ stream.userUrl }}" target="_blank">{{ stream.user }}</a></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-9 col-sm-8 col-xs-12 content">
-                <div class="title">{{ stream.title }}</div>
-                <div class="description" ng-bind-html="stream.description"></div>
+            <div class="show-more text-center">
+                <a ng-click="toggleDescriptionShow(stream)" href="">{{stream.showDescription? "Hide":"Show More" }}</a>
             </div>
+            <div class="row description clearfix" ng-show="stream.showDescription"
+                 ng-bind-html="stream.description"></div>
         </div>
+    
     </div>
 </div>

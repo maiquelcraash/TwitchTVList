@@ -65,6 +65,7 @@
 				_stream.streamUrl = stream.channel.url;
 				_stream.views = stream.channel.views;
 				_stream.followers = stream.channel.followers;
+				_stream.showDescription = false;
 				_streams.push(_stream);
 			});
 			return _streams;
@@ -72,6 +73,10 @@
 
 		function parseSearch(search) {
 			return search.toLowerCase().trim().replace(/\s\s+/g, '+');
+		}
+
+		$scope.toggleDescriptionShow = function(stream) {
+			stream.showDescription = !stream.showDescription;
 		}
 	});
 }());
