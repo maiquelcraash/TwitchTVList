@@ -5,6 +5,6 @@
 (function () {
 	"use strict";
 	//criação do APP
-	angular.module("twitchTVList", ["ngRoute"]);
+	angular.module("twitchTVList", []);
 
 }());

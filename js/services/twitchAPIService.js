@@ -15,11 +15,14 @@
 			return $http.get("https://api.twitch.tv/kraken/search/streams?limit=10&offset=0&q=" + search)
 		};
 
+		var _getUserData = function (username) {
+			return $http.get("https://api.twitch.tv/kraken/users/" + username)
+		};
+
 		return {
 			getStreamBySearch: _getStreamBySearch,
-			getFeaturedStreams: _getFeaturedStreams
+			getFeaturedStreams: _getFeaturedStreams,
+			getUserData: _getUserData
 		};
 	});
-
 }());
-

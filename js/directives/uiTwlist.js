@@ -12,7 +12,7 @@
 
 	angular.module("twitchTVList").directive("uiTwList", function () {
 		return {
-			// scope: true,													//herda o escopo do seu controller, mas cria um scopo unico para esta diretiva
+			scope: true,													//herda o escopo do seu controller, mas cria um scopo unico para esta diretiva
 			restrict: "E",
 			controller: "twitchTVListCtrl"
 		}

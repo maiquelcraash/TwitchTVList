@@ -26,6 +26,25 @@ https://api.twitch.tv/kraken/streams/freecodecamp
 
 - Exemplo do JSON:
 
+
+// dados do usuário
+{
+	"display_name": "ESL_SC2",
+	"_id": 30220059,
+	"name":"esl_sc2", 
+	"type":	"user",
+	"bio": "For standings, schedule, and results, visit http://www.intelextrememasters.com/",
+	"created_at": "2012-05-02T09:59:20Z",
+	"updated_at": "2016-09-06T12:33:12Z",
+	"logo":	"https://static-cdn.jtvnw.net/jtv_user_pictures/esl_sc2-profile_image-d6db9488cec97125-300x300.jpeg",
+	"_links": `{
+		"self":	"https://api.twitch.tv/kraken/users/esl_sc2"
+	}
+}
+
+
+
+// featured streams
 {
 	"_links":
 	{
@@ -96,7 +115,7 @@ https://api.twitch.tv/kraken/streams/freecodecamp
 
 
 
-
+// search streams
 {
 	"_total" : 63, 
 	"_links" : {
