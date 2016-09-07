@@ -6,14 +6,16 @@
 	"use strict";
 
 	angular.module("twitchTVList").controller("userListCtrl", function ($scope, twitchAPI, streamsParseService, $q) {
+		$scope.users = [];
+
 		var usernames = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404"];
-		$scope.users = usernames.map(function (username) {
+		var usersdata = usernames.map(function (username) {
 			return twitchAPI.getUserData(username)
 				.success(function (data, status) {
-					return streamsParseService.parseUserData(data, status);
+					$scope.users.push(streamsParseService.parseUserData(data, status));
 				})
-				.error(function (data, status, username) {
-					return streamsParseService.parseUserData(data, status, username);
+				.error(function (data, status) {
+					$scope.users.push(streamsParseService.parseUserData(data, status, data.message));
 				});
 		});
 
@@ -44,20 +46,22 @@
 					.finally(function () {
 						if ((passed + failed) == promises.length) {
 							console.log("COMPLETE: " + "passed = " + passed + ", failed = " + failed);
-							if (failed > 0) {
-								deferred.reject(responses);
-							} else {
 								deferred.resolve(responses);
-							}
 						}
 					});
 			});
 			return deferred.promise;
 		};
 
-		$q.allComplete($scope.users).then(function (values) {
-			console.log(values.data);
-		});
+		var promise = $q.allComplete(usersdata);
+		promise
+			.then(function (values) {
+				console.log($scope.users);
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+
 
 
 	});
