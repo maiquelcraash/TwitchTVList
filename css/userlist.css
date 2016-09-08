@@ -1,0 +1,8 @@
+.userlist img {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.userlist td {
+    padding: 4px;
+}

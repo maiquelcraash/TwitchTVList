@@ -5,7 +5,7 @@
 (function () {
 	"use strict";
 
-	angular.module("twitchTVList").factory("streamsParseService", function ($sce) {
+	angular.module("twitchTVList").factory("streamsParseService", function ($sce, twitchAPI) {
 
 		/**
 		 * Return the parsed featured streams
@@ -58,28 +58,47 @@
 			return _streams;
 		};
 
-		var _parseUserData = function (data, status, username) {
+		var _parseUserData = function (data, status) {
 			var _user = {};
 
 			if (status >= 200 && status <= 299) {
 				_user.name = data.display_name;
 				_user.bio = data.bio;
-				_user.logoUrl = data.logo;
+				_user.logoUrl = data.logo || "https://dummyimage.com/80x80/ecf0e7/5c5457.jpg&text=0x3F";
 				_user.url = data._links.self;
+
 			}
 			else {
-				_user.name = username;
+				_user.name = data.message;
 				_user.bio = "User not Found";
-				_user.logoUrl = null;
+				_user.logoUrl = "https://dummyimage.com/80x80/ecf0e7/5c5457.jpg&text=0x3F";
 				_user.url = null;
 			}
+
 			return _user;
 		};
+
+		var _parseUserStream = function (data) {
+			var _stream = {};
+
+			if (data.stream) {
+				_stream.status = "Online";
+				_stream.game = data.stream.game;
+				_stream.url = data.stream.channel.url;
+			}
+			else {
+				_stream.status = "Offline";
+			}
+
+			return _stream;
+		};
+
 
 		return {
 			parseFeaturedStreams: _parseFeaturedStreams,
 			parseSearchedStreams: _parseSearchedStreams,
-			parseUserData: _parseUserData
+			parseUserData: _parseUserData,
+			parseUserStream: _parseUserStream
 		}
 	});
 

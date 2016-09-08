@@ -11,12 +11,13 @@
 		var usernames = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404"];
 		var usersdata = usernames.map(function (username) {
 			return twitchAPI.getUserData(username)
-				.success(function (data, status) {
-					$scope.users.push(streamsParseService.parseUserData(data, status));
-				})
-				.error(function (data, status) {
-					$scope.users.push(streamsParseService.parseUserData(data, status, data.message));
-				});
+				// .success(function (data, status) {
+				//
+				//
+				// })
+				// .error(function (data, status) {
+				// 	$scope.users.push(streamsParseService.parseUserData(data, status, data.message));
+				// });
 		});
 
 		//Função que faz com que todas as promises sejam executadas, com ou sem erros.
@@ -34,36 +35,42 @@
 			angular.forEach(promises, function (promise, index) {
 				promise
 					.then(function (result) {
-						console.info('done', result);
 						passed++;
 						responses.push(result);
 					})
 					.catch(function (result) {
-						console.error('err', result);
 						failed++;
 						responses.push(result);
 					})
 					.finally(function () {
 						if ((passed + failed) == promises.length) {
 							console.log("COMPLETE: " + "passed = " + passed + ", failed = " + failed);
-								deferred.resolve(responses);
+							deferred.resolve(responses);
 						}
 					});
 			});
 			return deferred.promise;
 		};
 
-		var promise = $q.allComplete(usersdata);
-		promise
+		$q.allComplete(usersdata)
 			.then(function (values) {
-				console.log($scope.users);
+				values.forEach(function (value) {
+					var user = streamsParseService.parseUserData(value.data, value.status);
+
+					twitchAPI.getUserStreams(value.data.name)
+						.success(function (data, status) {
+							user.stream = streamsParseService.parseUserStream(data);
+							$scope.users.push(user);
+						})
+						.error(function (data, status) {
+							$scope.users.push(user);
+						})
+				});
+
 			})
 			.catch(function (error) {
 				console.log(error);
 			});
 
-
-
 	});
-
 }());
