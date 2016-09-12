@@ -1,0 +1,19 @@
+.header {
+    padding: 10px;
+    background-color: white;
+    font-family: 'Bungee', cursive;
+    font-size: 40pt;
+    color: #7d5bbe;
+    margin: 10px 1px 10px 1px;
+    border-radius: 4px;
+}
+
+ui-tw-search .form-control{
+    border-color: #7d5bbe;
+    border-width: 2px;
+    margin-bottom: 10px;
+}
+
+body {
+    background-color: #7d5bbe;
+}

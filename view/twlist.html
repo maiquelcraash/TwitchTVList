@@ -3,7 +3,7 @@
         <div class="stream" ng-repeat="stream in streams | orderBy:'viewers':true">
             <div class="row">
                 <div class="col-md-4 col-sm-4 col-xs-12 image">
-                    <a href="{{ stream.streamUrl }}" target="_blank"><img src="{{ stream.streamImg }}"></a>
+                    <a href="{{ stream.streamUrl }}" target="_blank"><img class="img-responsive" src="{{ stream.streamImg }}"></a>
                 </div>
                 <div class="col-md-8 col-sm-8 col-xs-12 content">
                     <div class="title">{{ stream.title }}</div>
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="show-more text-center">
-                <a ng-click="toggleDescriptionShow(stream)" href="">{{stream.showDescription? "Hide":"Show More" }}</a>
+                <a ng-click="toggleDescriptionShow(stream)" href="">{{stream.showDescription? "Hide":"Show Description" }}</a>
             </div>
             <div class="row description clearfix" ng-show="stream.showDescription"
                  ng-bind-html="stream.description"></div>

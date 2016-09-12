@@ -6,3 +6,12 @@
 .userlist td {
     padding: 4px;
 }
+
+.userlist .table-responsive table td {
+    vertical-align: middle;
+}
+
+.userlist, .userlist a {
+    color: white;
+    font-size: 14px;
+}

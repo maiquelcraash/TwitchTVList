@@ -1,9 +1,13 @@
 <div class="userlist">
-    <table class="table-responsive">
-        <tr ng-repeat="user in users | orderBy:'stream.status':true">
-            <td><img src="{{ user.logoUrl }}"></td>
-            <td><a href="{{ user.url || ''}}" target="_blank">{{ user.name }}</a></td>
-            <td>{{ user.stream.status }}</td>
-        </tr>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-condensed">
+            <tr ng-repeat="user in users | orderBy:'stream.game':false">
+                <td><img src="{{ user.logoUrl }}"></td>
+                <td><a href="{{ user.url }}" ng-show="user.url" target="_blank">{{ user.name }}</a>
+                    <p ng-show="!user.url">{{ user.name }}</p></td>
+                <td><a href="{{ user.stream.url }}" ng-show="user.stream.game" target="_blank">{{ user.stream.game}}</a>
+                    <p ng-show="!user.stream.game">{{ user.stream.status }}</p></td>
+            </tr>
+        </table>
+    </div>
 </div>

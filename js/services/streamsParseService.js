@@ -65,7 +65,7 @@
 				_user.name = data.display_name;
 				_user.bio = data.bio;
 				_user.logoUrl = data.logo || "https://dummyimage.com/80x80/ecf0e7/5c5457.jpg&text=0x3F";
-				_user.url = data._links.self;
+				_user.url = "https://www.twitch.tv/" + data.display_name + "/profile";
 
 			}
 			else {

@@ -10,14 +10,14 @@
 
 		var usernames = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404"];
 		var usersdata = usernames.map(function (username) {
-			return twitchAPI.getUserData(username)
-				// .success(function (data, status) {
-				//
-				//
-				// })
-				// .error(function (data, status) {
-				// 	$scope.users.push(streamsParseService.parseUserData(data, status, data.message));
-				// });
+			return twitchAPI.getUserData(username);
+			// .success(function (data, status) {
+			//
+			//
+			// })
+			// .error(function (data, status) {
+			// 	$scope.users.push(streamsParseService.parseUserData(data, status, data.message));
+			// });
 		});
 
 		//Função que faz com que todas as promises sejam executadas, com ou sem erros.
@@ -64,7 +64,7 @@
 						})
 						.error(function (data, status) {
 							$scope.users.push(user);
-						})
+						});
 				});
 
 			})
@@ -73,4 +73,6 @@
 			});
 
 	});
+
+
 }());
