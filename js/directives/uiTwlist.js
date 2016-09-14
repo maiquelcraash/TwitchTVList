@@ -15,7 +15,7 @@
 			scope: true,													//herda o escopo do seu controller, mas cria um scopo unico para esta diretiva
 			restrict: "E",
 			controller: "twitchTVListCtrl"
-		}
+		};
 	});
 
 	angular.module("twitchTVList").directive("uiTwSearch", function () {
@@ -33,7 +33,7 @@
 					}
 				});
 			}
-		}
+		};
 	});
 
 	angular.module("twitchTVList").directive("uiTwStreams", function () {

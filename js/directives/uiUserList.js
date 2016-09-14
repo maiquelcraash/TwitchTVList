@@ -10,7 +10,7 @@
 			restrict: "E",
 			controller: "userListCtrl",
 			templateUrl: "view/userlist.html"
-		}
+		};
 	});
 
 }());

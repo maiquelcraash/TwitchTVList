@@ -99,7 +99,7 @@
 			parseSearchedStreams: _parseSearchedStreams,
 			parseUserData: _parseUserData,
 			parseUserStream: _parseUserStream
-		}
+		};
 	});
 
 }());

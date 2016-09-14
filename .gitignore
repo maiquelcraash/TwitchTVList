@@ -2,3 +2,5 @@
 .idea
 .gitignore
 /lib/
+/dist/
+/node_modules/

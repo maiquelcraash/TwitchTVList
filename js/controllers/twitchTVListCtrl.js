@@ -32,6 +32,6 @@
 
 		$scope.toggleDescriptionShow = function(stream) {
 			stream.showDescription = !stream.showDescription;
-		}
+		};
 	});
 }());

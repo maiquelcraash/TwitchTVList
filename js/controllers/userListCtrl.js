@@ -8,7 +8,7 @@
 	angular.module("twitchTVList").controller("userListCtrl", function ($scope, twitchAPI, streamsParseService, $q) {
 		$scope.users = [];
 
-		var usernames = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404"];
+		var usernames = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin", "comster404",  'TR7K', 'sheevergaming', 'Beohoff'];
 		var usersdata = usernames.map(function (username) {
 			return twitchAPI.getUserData(username);
 			// .success(function (data, status) {
