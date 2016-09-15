@@ -1,0 +1,27 @@
+{
+  "name": "twitchtv-list",
+  "version": "1.0.0",
+  "description": "A small TwitchTV List and search",
+  "main": "Gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maiquelcraash/TwitchTVList.git"
+  },
+  "author": "maiquel.tools@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maiquelcraash/TwitchTVList/issues"
+  },
+  "homepage": "https://github.com/maiquelcraash/TwitchTVList#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-uglify": "^2.0.0",
+    "jshint": "^2.9.3"
+  },
+}

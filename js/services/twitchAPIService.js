@@ -7,20 +7,26 @@
 
 	angular.module("twitchTVList").factory("twitchAPI", function ($http) {
 
+		var configs = {
+			headers: {
+				'Client-ID': 'm0y2hfwhwzrij56faantomztoyx2oyj'
+			}
+		};
+
 		var _getFeaturedStreams = function () {
-			return $http.get("https://api.twitch.tv/kraken/streams/featured?limit=10");
+			return $http.get("https://api.twitch.tv/kraken/streams/featured?limit=10", configs);
 		};
 
 		var _getStreamBySearch = function (search) {
-			return $http.get("https://api.twitch.tv/kraken/search/streams?limit=10&offset=0&q=" + search);
+			return $http.get("https://api.twitch.tv/kraken/search/streams?limit=10&offset=0&q=" + search, configs);
 		};
 
 		var _getUserData = function (username) {
-			return $http.get("https://api.twitch.tv/kraken/users/" + username);
+			return $http.get("https://api.twitch.tv/kraken/users/" + username, configs);
 		};
 
 		var _getUserStreams = function (username) {
-			return $http.get("https://api.twitch.tv/kraken/streams/" + username);
+			return $http.get("https://api.twitch.tv/kraken/streams/" + username, configs);
 		};
 
 		return {
