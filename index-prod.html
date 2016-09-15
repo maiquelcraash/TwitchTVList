@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="twitchTVList">
+<head>
+    <meta charset="UTF-8">
+    <title>TuitchTV List</title>
+    <link href="css/styles.min.css" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+    <script src="js/all.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row header">
+            <div class="col-md-12">
+                TwitchTV Casts
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-7">
+                <ui-tw-list>
+                    <ui-tw-search></ui-tw-search>
+                    <ui-tw-streams></ui-tw-streams>
+                </ui-tw-list>
+            </div>
+            <div class="col-md-6 col-sm=5">
+                <ui-user-list></ui-user-list>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
