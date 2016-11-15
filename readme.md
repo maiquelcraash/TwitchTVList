@@ -1,14 +1,12 @@
+TwitchTV trends and finder
+
+DEMO: https://codepen.io/maiquelcraash/full/ALEBWz/
+
 - Ferramenta para  visualizar streams do TwitchTV
 
 - Necessário utilizar o "$ bower install" no diretório para instalar as dependências de bibliotecas
 
 - Necessário utilizar o "$ npm install" no diretório para instalar dependências relacionadas a automação e testes
-
-- Tarefa do Free Code Camp
-https://www.freecodecamp.com/challenges/use-the-twitchtv-json-api
-
-- Aplicação exemplo:
-https://codepen.io/FreeCodeCamp/full/Myvqmo/
 
 - Documentação da API do Twitch
 https://github.com/justintv/Twitch-API#json-p
